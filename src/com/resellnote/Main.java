@@ -11,19 +11,12 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Storage storage = new Storage(5);
 
-        ArrayList<Item> items = new ArrayList<>();
-
-        items.add(new Shoes("Piraty", 1500, 6, "red", 11));
-        items.add(new Clothes("Bogo", 1500, 7, "black", "L"));
-        items.add(new Accessories("Gucci belt", 600, 4));
-
-        for (Item i : items) {
-            System.out.println(i.getName());
-        }
+        storage.addItem(0);
+        storage.makeAsSold(0);
 
 
- /*
         System.out.println("|   RESELL NOTE    |");
         System.out.println(commands);
 
@@ -48,22 +41,33 @@ public class Main {
                     System.out.println(commands);
                     break;
                 case 1:
-                    // dostepne itemy
+                    storage.availableItems();
+                    break;
                 case 2:
-                    // sprzedane itemy
+                    storage.soldItems();
+                    break;
                 case 3:
-                    // dodaj item
+                    storage.addItem(0);
+                    storage.addItem(1);
+                    storage.addItem(2);
+                    storage.addItem(0);
+                    break;
                 case 4:
-                    // usun item
+                    System.out.println("Remove item: " );
+                    int id = in.nextInt();
+                    storage.removeItem(id);
+                    break;
                 case 5:
                     // edytuj item
                 case 6:
-                    // sprzedaj item
+                    System.out.println("Make as sold: " );
+                    id = in.nextInt();
+                    storage.makeAsSold(id);
+                    break;
                 case 7:
                     // bilans
 
             }
         }
-    } */
     }
 }

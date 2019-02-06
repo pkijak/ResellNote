@@ -9,7 +9,7 @@ public abstract class Item {
     protected int price;
     protected int soldPrice;
     protected int condition;
-    protected int id;
+    public int id;
 
     static AtomicInteger nextId = new AtomicInteger();
 
