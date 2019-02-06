@@ -6,6 +6,6 @@ public class Accessories extends Item {
         this.name = name;
         this.price = price;
         this.condition = condition;
-        this.id = nextId.getAndIncrement();
+//        this.id = nextId.getAndIncrement();
     }
 }

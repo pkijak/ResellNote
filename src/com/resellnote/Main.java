@@ -13,8 +13,7 @@ public class Main {
 
         Storage storage = new Storage(5);
 
-        storage.addItem(0);
-        storage.makeAsSold(0);
+        storage.addItem();
 
 
         System.out.println("|   RESELL NOTE    |");
@@ -44,25 +43,26 @@ public class Main {
                     storage.availableItems();
                     break;
                 case 2:
-                    storage.soldItems();
+                   // storage.soldItems();
                     break;
                 case 3:
-                    storage.addItem(0);
-                    storage.addItem(1);
-                    storage.addItem(2);
-                    storage.addItem(0);
+//                    storage.addItem(0);
+//                    storage.addItem(1);
+//                    storage.addItem(2);
+//                    storage.addItem(0);
                     break;
                 case 4:
                     System.out.println("Remove item: " );
                     int id = in.nextInt();
-                    storage.removeItem(id);
+                  //  storage.removeItem(id);
                     break;
                 case 5:
-                    // edytuj item
+                    storage.modifyItem();
+                    break;
                 case 6:
                     System.out.println("Make as sold: " );
                     id = in.nextInt();
-                    storage.makeAsSold(id);
+                   // storage.makeAsSold(id);
                     break;
                 case 7:
                     // bilans

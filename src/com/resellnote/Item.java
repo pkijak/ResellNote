@@ -9,9 +9,13 @@ public abstract class Item {
     protected int price;
     protected int soldPrice;
     protected int condition;
-    public int id;
+    protected int id;
 
     static AtomicInteger nextId = new AtomicInteger();
+
+    public static int assignId() {
+        return nextId.getAndIncrement();
+    }
 
     public boolean isSold() {
         return sold;

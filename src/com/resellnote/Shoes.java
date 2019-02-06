@@ -13,6 +13,6 @@ public class Shoes extends Item{
         this.condition = condition;
         this.color = color;
         this.size = size;
-        this.id = nextId.getAndIncrement();
+//        this.id = nextId.getAndIncrement();
     }
 }
