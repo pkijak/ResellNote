@@ -1,5 +1,6 @@
 package com.resellnote;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -11,31 +12,18 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Item piraty = new Shoes("piraty",1500,9,"red",11);
-        Item piraty2 = new Shoes("piraty",1500,9,"red",11);
-        Item piraty3 = new Shoes("piraty",1500,9,"red",11);
+        ArrayList<Item> items = new ArrayList<>();
+
+        items.add(new Shoes("Piraty", 1500, 6, "red", 11));
+        items.add(new Clothes("Bogo", 1500, 7, "black", "L"));
+        items.add(new Accessories("Gucci belt", 600, 4));
+
+        for (Item i : items) {
+            System.out.println(i.getName());
+        }
 
 
-        Item bogo1 = new Clothes("Bogo",2000,9,"black","L");
-        Item bogo2 = new Clothes("Bogo",2000,9,"black","L");
-        Item bogo3 = new Clothes("Bogo",2000,9,"black","L");
-
-        Item necklace = new Accessories("Belt gucc",900,4);
-
-        System.out.println(necklace.getId());
-
-        System.out.println(piraty.getId());
-        System.out.println(piraty2.getId());
-        System.out.println(piraty3.getId());
-
-        System.out.println(bogo1.getId());
-        System.out.println(bogo2.getId());
-        System.out.println(bogo3.getId());
-
-
-
-
-
+ /*
         System.out.println("|   RESELL NOTE    |");
         System.out.println(commands);
 
@@ -76,5 +64,6 @@ public class Main {
 
             }
         }
+    } */
     }
 }
