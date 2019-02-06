@@ -10,16 +10,30 @@ public class Main {
 
     public static void main(String[] args) {
 
+
+        Item piraty = new Shoes("Piraty",11,1500,9);
+
+
+        System.out.println(piraty.soldPrice);
+        System.out.println(piraty.getCondition());
+
+
+
+
         System.out.println("|   RESELL NOTE    |");
         System.out.println(commands);
 
         boolean flag = true;
         while (flag) {
             System.out.println("Wprowadz polecenie: ");
-            
+
 
             int answer = in.nextInt();
             switch (answer) {
+
+                default:
+                    System.out.println("Polecenie nieprawidlowe");
+                    break;
 
                 case -1:
                     System.out.println("QUIT");

@@ -1,10 +1,63 @@
 package com.resellnote;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public abstract class Item {
 
-    private boolean sold = false;
-    private String name;
-    private int price;
-    private int soldPrice;
+    public boolean sold = false;
+    public String name;
+    public int price;
+    public int soldPrice;
+    public int condition;
+    public int id;
 
+    static AtomicInteger nextId = new AtomicInteger();
+
+    public boolean isSold() {
+        return sold;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getSoldPrice() {
+        return soldPrice;
+    }
+
+    public int getCondition() {
+        return condition;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setSold(boolean sold) {
+        this.sold = sold;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setSoldPrice(int soldPrice) {
+        this.soldPrice = soldPrice;
+    }
+
+    public void setCondition(int condition) {
+        this.condition = condition;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
