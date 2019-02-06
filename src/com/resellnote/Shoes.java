@@ -7,11 +7,12 @@ public class Shoes extends Item{
 
 
 
-    public Shoes(String name, int size, int price, int condition) {
-        super.name = name;
+    public Shoes(String name, int price, int condition, String color, int size) {
+        this.name = name;
+        this.price = price;
+        this.condition = condition;
+        this.color = color;
         this.size = size;
-        super.price = price;
-        super.condition = condition;
-        super.id = nextId.getAndIncrement();
+        this.id = nextId.getAndIncrement();
     }
 }

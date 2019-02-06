@@ -11,11 +11,27 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Item piraty = new Shoes("Piraty",11,1500,9);
+        Item piraty = new Shoes("piraty",1500,9,"red",11);
+        Item piraty2 = new Shoes("piraty",1500,9,"red",11);
+        Item piraty3 = new Shoes("piraty",1500,9,"red",11);
 
 
-        System.out.println(piraty.soldPrice);
-        System.out.println(piraty.getCondition());
+        Item bogo1 = new Clothes("Bogo",2000,9,"black","L");
+        Item bogo2 = new Clothes("Bogo",2000,9,"black","L");
+        Item bogo3 = new Clothes("Bogo",2000,9,"black","L");
+
+        Item necklace = new Accessories("Belt gucc",900,4);
+
+        System.out.println(necklace.getId());
+
+        System.out.println(piraty.getId());
+        System.out.println(piraty2.getId());
+        System.out.println(piraty3.getId());
+
+        System.out.println(bogo1.getId());
+        System.out.println(bogo2.getId());
+        System.out.println(bogo3.getId());
+
 
 
 

@@ -4,12 +4,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class Item {
 
-    public boolean sold = false;
-    public String name;
-    public int price;
-    public int soldPrice;
-    public int condition;
-    public int id;
+    protected boolean sold = false;
+    protected String name;
+    protected int price;
+    protected int soldPrice;
+    protected int condition;
+    protected int id;
 
     static AtomicInteger nextId = new AtomicInteger();
 
