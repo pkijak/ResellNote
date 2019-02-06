@@ -25,6 +25,15 @@ public class Storage {
 
     }
 
+    public void soldItems() {
+        System.out.println("Sold items:");
+        for (Map.Entry<Integer, Item> entry : items.entrySet()) {
+            if (entry.getValue().sold) {
+                System.out.println(entry.getKey() + "." + entry.getValue().getName());
+            }
+        }
+    }
+
     public void addItem() {
         items.put(Item.assignId(), new Shoes("Piraty", 1500, 7, "red", 11));
         items.put(Item.assignId(), new Shoes("Pirat2y", 1500, 7, "red", 11));
@@ -34,13 +43,21 @@ public class Storage {
         System.out.println("item dodany");
     }
 
-    public void modifyItem() {
+
+    public void modifyItem() { // tylko nazwe zmienia
         System.out.println("Wybierz przedmiot do edytowania: ");
         int id = in.nextInt();
         System.out.println("Enter new name for " + items.get(id).getName());
         in.nextLine();
         String newName = in.nextLine();
         items.get(id).setName(newName);
+    }
+
+    public void soldItem() {
+        System.out.println("Choose item to mark as sold: " );
+        int id = in.nextInt();
+        items.get(id).setSold(true);
+        System.out.println("You marked " + items.get(id).getName() + " as sold");
     }
 
 }

@@ -43,26 +43,19 @@ public class Main {
                     storage.availableItems();
                     break;
                 case 2:
-                   // storage.soldItems();
+                    storage.soldItems();
                     break;
                 case 3:
-//                    storage.addItem(0);
-//                    storage.addItem(1);
-//                    storage.addItem(2);
-//                    storage.addItem(0);
+                    // add item
                     break;
                 case 4:
-                    System.out.println("Remove item: " );
-                    int id = in.nextInt();
-                  //  storage.removeItem(id);
+                    //  remove item
                     break;
                 case 5:
-                    storage.modifyItem();
+                   //modify item
                     break;
                 case 6:
-                    System.out.println("Make as sold: " );
-                    id = in.nextInt();
-                   // storage.makeAsSold(id);
+                storage.soldItems();
                     break;
                 case 7:
                     // bilans
