@@ -46,16 +46,16 @@ public class Main {
                     storage.soldItems();
                     break;
                 case 3:
-                    // add item
+                    storage.addItem();
                     break;
                 case 4:
                     //  remove item
                     break;
                 case 5:
-                   //modify item
+                    //modify item
                     break;
                 case 6:
-                storage.soldItems();
+                    storage.soldItem();
                     break;
                 case 7:
                     // bilans
