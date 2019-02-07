@@ -1,13 +1,12 @@
 package com.resellnote;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     private static Scanner in = new Scanner(System.in);
     private static String commands = "[-1]QUIT, [0]Polecenia, [1]Dostepne przedmioty, [2]Sprzedane przedmioty, [3]Dodaj przedmiot, [4]Usun przedmiot,"
-            + " [5]Edytuj przedmiot, [6]Sprzedaj. [7] Bilans";
+            + " [5]Edytuj przedmiot, [6]Sprzedaj. [7] Bilans [8] Szczegoly przedmiotu";
 
     public static void main(String[] args) {
 
@@ -49,17 +48,19 @@ public class Main {
                     storage.addItem();
                     break;
                 case 4:
-                    //  remove item
+                    storage.removeItem();
                     break;
                 case 5:
                     //modify item
                     break;
                 case 6:
-                    storage.soldItem();
+                    storage.sellItem();
                     break;
                 case 7:
-                    // bilans
-
+                    storage.bilans();
+                    break;
+                case 8:
+                    // szczegoly przedmiotu
             }
         }
     }

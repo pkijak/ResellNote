@@ -1,6 +1,5 @@
 package com.resellnote;
 
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -60,7 +59,7 @@ public class Storage {
         items.get(id).setName(newName);
     }
 
-    public void soldItem() {
+    public void sellItem() {
         System.out.println("Choose item to mark as sold: ");
         int id = in.nextInt();
         items.get(id).setSold(true);
@@ -71,4 +70,35 @@ public class Storage {
 
     }
 
-}
+    public void removeItem() {
+        System.out.println("Choose item to remove: ");
+        int id = in.nextInt();
+        System.out.println(items.get(id).getName() + " removed");
+        items.remove(id);
+    }
+
+    public void bilans() {
+
+        int spendMoney = 0;
+        int earnedMoney = 0;
+        for (Map.Entry<Integer, Item> entry : items.entrySet()) {
+            if (!entry.getValue().sold) {
+                spendMoney += entry.getValue().getPrice();
+                System.out.println("Price for " + entry.getValue().getName() + " added");
+            } else {
+                earnedMoney += entry.getValue().getSoldPrice();
+                System.out.println("Sold price for " + entry.getValue().getName() + " addded");
+            }
+        }
+        System.out.println("You have already spended: " + spendMoney + " PLN");
+        System.out.println("You have already earned: " + earnedMoney + " PLN");
+        if (earnedMoney > spendMoney) {
+            System.out.println("Wow, you are on +");
+        } else {
+            System.out.println("Keep trying");
+        }
+    }
+        public void details () {
+
+        }
+    }
