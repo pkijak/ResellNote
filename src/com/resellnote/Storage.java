@@ -6,10 +6,7 @@ import java.util.TreeMap;
 
 public class Storage {
 
-    private int maxCapacity;
-
-    public Storage(int maxCapacity) {
-        this.maxCapacity = maxCapacity;
+    public Storage() {
     }
 
     Scanner in = new Scanner(System.in);
@@ -42,7 +39,6 @@ public class Storage {
         String option = in.nextLine();
 
         switch (option.toLowerCase()) {
-
             case "clothes":
                 System.out.println("Enter Name / Color / Size, split by ' - ' ");
                 String clothesString = in.nextLine();
@@ -69,7 +65,6 @@ public class Storage {
                     break;
                 }
             case "shoes":
-
                 System.out.println("Enter Name / Color, split by ' - ' ");
                 String shoesString = in.nextLine();
                 String[] shoesArray = shoesString.split("-");
@@ -95,13 +90,28 @@ public class Storage {
                     System.out.println("Wrong number of parameters");
                 }
             case "accessories":
-                System.out.println("adding accessories");
+                System.out.println("Enter name: ");
+                String name = in.nextLine();
+
+                System.out.println("Enter price: ");
+                int price = in.nextInt();
+
+                System.out.println("Enter condition: ");
+                int condition = in.nextInt();
+
+                System.out.println("Enter size: ");
+                int size = in.nextInt();
+
+                items.put(Item.assignId(), new Accessories(name, price, condition, size));
+                System.out.println(name + " added to list");
+
+                in.nextLine();
                 break;
         }
     }
 
-
     public void modifyItem() { // work in progress
+
         if (items.isEmpty()) {
             System.out.println("Items not found");
         } else {
@@ -121,6 +131,7 @@ public class Storage {
     }
 
     public void sellItem() {
+
         if (items.isEmpty()) {
             System.out.println("Items not found");
         } else {
@@ -141,6 +152,7 @@ public class Storage {
     }
 
     public void removeItem() {
+
         if (items.isEmpty()) {
             System.out.println("Items not found");
         } else {

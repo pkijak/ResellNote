@@ -1,5 +1,6 @@
 package com.resellnote;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -10,19 +11,24 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Storage storage = new Storage(5);
-
+        Storage storage = new Storage();
 
 
         System.out.println("|   RESELL NOTE    |");
         System.out.println(commands);
-
+        int answer = 0;
         boolean flag = true;
         while (flag) {
             System.out.println("Choose option: (0 - print list)");
 
+            try {
+                answer = in.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("That's not a number :O ");
+                in.next();
 
-            int answer = in.nextInt();
+            }
+
             switch (answer) {
 
                 default:
@@ -60,6 +66,7 @@ public class Main {
                     break;
                 case 8:
                     storage.details();
+                    break;
             }
         }
     }
