@@ -5,14 +5,13 @@ import java.util.Scanner;
 public class Main {
 
     private static Scanner in = new Scanner(System.in);
-    private static String commands = "[-1]Quit, [0]Polecenia, [1]Dostepne przedmioty, [2]Sprzedane przedmioty, [3]Dodaj, [4]Usun,"
-            + " [5]Edytuj, [6]Sprzedaj. [7]Bilans [8]Szczegoly";
+    private static String commands = "[-1]Quit, [0]Commands, [1]Available items, [2] Sold items, [3]Add, [4]Delete,"
+            + " [5]Edit, [6]Sell. [7]Bilans [8]Details";
 
     public static void main(String[] args) {
 
         Storage storage = new Storage(5);
 
-        storage.addItem();
 
 
         System.out.println("|   RESELL NOTE    |");

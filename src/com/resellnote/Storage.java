@@ -37,6 +37,7 @@ public class Storage {
     }
 
     public void addItem() {
+        /*
         if (items.size() >= maxCapacity) {
             System.out.println("You cant add more items, storage full! (" + items.size() + "/" + maxCapacity + ")");
         } else {
@@ -46,6 +47,20 @@ public class Storage {
             items.put(Item.assignId(), new Shoes("Creamy", 1500, 7, "red", 11));
             items.put(Item.assignId(), new Shoes("Sezame", 1500, 7, "red", 11));
             System.out.println("Item added");
+        } */
+        System.out.println("What do you want to add? [Shoes] | [Clothes] | [Accessories] ");
+        String option = in.nextLine();
+
+        switch (option.toLowerCase()) {
+            case "clothes":
+                System.out.println("adding clothes");
+                break;
+            case "shoes":
+                System.out.println("Addin shoes");
+                break;
+            case "accessories":
+                System.out.println("adding accessories");
+                break;
         }
     }
 
@@ -111,7 +126,7 @@ public class Storage {
         }
         System.out.println("You have already spended: " + spendMoney + " PLN");
         System.out.println("You sold items for: " + earnedMoney + " PLN");
-        System.out.println("Current profit: " + profit + " PLN");
+        System.out.println("Current profit:  " + profit + " PLN");
 
         if (earnedMoney > spendMoney) {
             System.out.println("Wow, you are on +");
