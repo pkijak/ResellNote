@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Main {
 
     private static Scanner in = new Scanner(System.in);
-    private static String commands = "[-1]QUIT, [0]Polecenia, [1]Dostepne przedmioty, [2]Sprzedane przedmioty, [3]Dodaj przedmiot, [4]Usun przedmiot,"
-            + " [5]Edytuj przedmiot, [6]Sprzedaj. [7] Bilans [8] Szczegoly przedmiotu";
+    private static String commands = "[-1]Quit, [0]Polecenia, [1]Dostepne przedmioty, [2]Sprzedane przedmioty, [3]Dodaj, [4]Usun,"
+            + " [5]Edytuj, [6]Sprzedaj. [7]Bilans [8]Szczegoly";
 
     public static void main(String[] args) {
 
@@ -20,14 +20,14 @@ public class Main {
 
         boolean flag = true;
         while (flag) {
-            System.out.println("Wprowadz polecenie: ");
+            System.out.println("Choose option: (0 - print list)");
 
 
             int answer = in.nextInt();
             switch (answer) {
 
                 default:
-                    System.out.println("Polecenie nieprawidlowe");
+                    System.out.println("Wrong command");
                     break;
 
                 case -1:
@@ -51,7 +51,7 @@ public class Main {
                     storage.removeItem();
                     break;
                 case 5:
-                    //modify item
+                    System.out.println("modify item");
                     break;
                 case 6:
                     storage.sellItem();
@@ -60,7 +60,7 @@ public class Main {
                     storage.bilans();
                     break;
                 case 8:
-                    // szczegoly przedmiotu
+                    storage.details();
             }
         }
     }

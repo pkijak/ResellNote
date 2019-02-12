@@ -14,7 +14,7 @@ public abstract class Item {
     static AtomicInteger nextId = new AtomicInteger();
 
     public static int assignId() {
-        return nextId.getAndIncrement();
+        return nextId.getAndIncrement(); //  ID for every item
     }
 
     public boolean isSold() {
