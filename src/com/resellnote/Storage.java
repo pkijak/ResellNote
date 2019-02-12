@@ -50,55 +50,98 @@ public class Storage {
     }
 
 
-    public void modifyItem() { // tylko nazwe zmienia
-        System.out.println("Wybierz przedmiot do edytowania: ");
+    public void modifyItem() { // work in progress
+        printInLine();
+        System.out.println("\nPick item to modify: ");
         int id = in.nextInt();
-        System.out.println("Enter new name for " + items.get(id).getName());
-        in.nextLine();
-        String newName = in.nextLine();
-        items.get(id).setName(newName);
+
+        if (items.containsKey(id)) {
+            System.out.println("Enter new name for " + items.get(id).getName());
+            in.nextLine();
+            String newName = in.nextLine();
+            items.get(id).setName(newName);
+        } else {
+            System.out.println("Item not found");
+        }
     }
 
     public void sellItem() {
-        System.out.println("Choose item to mark as sold: ");
+        printInLine();
+        System.out.println("\nChoose item to mark as sold: ");
         int id = in.nextInt();
-        items.get(id).setSold(true);
-        System.out.println("How much did you get for " + items.get(id).getName() + "?: ");
-        items.get(id).setSoldPrice(in.nextInt());
-        System.out.println("You marked " + items.get(id).getName() + " as sold");
-        System.out.println("Your profit is " + (items.get(id).soldPrice - items.get(id).price) + " PLN");
 
+        if (items.containsKey(id)) {
+            items.get(id).setSold(true);
+            System.out.println("How much did you get for " + items.get(id).getName() + "?: ");
+            items.get(id).setSoldPrice(in.nextInt());
+            System.out.println("You marked " + items.get(id).getName() + " as sold");
+            System.out.println("Your profit is " + (items.get(id).soldPrice - items.get(id).price) + " PLN");
+        } else {
+            System.out.println("Item not found");
+        }
     }
 
     public void removeItem() {
-        System.out.println("Choose item to remove: ");
+        printInLine();
+        System.out.println("\nChoose item to remove: ");
         int id = in.nextInt();
-        System.out.println(items.get(id).getName() + " removed");
-        items.remove(id);
+
+        if (items.containsKey(id)) {
+            System.out.println(items.get(id).getName() + " removed");
+            items.remove(id);
+        } else {
+            System.out.println("Item not found");
+        }
     }
+
 
     public void bilans() {
 
         int spendMoney = 0;
         int earnedMoney = 0;
+        int profit = 0;
+
         for (Map.Entry<Integer, Item> entry : items.entrySet()) {
             if (!entry.getValue().sold) {
                 spendMoney += entry.getValue().getPrice();
-                System.out.println("Price for " + entry.getValue().getName() + " added");
             } else {
                 earnedMoney += entry.getValue().getSoldPrice();
-                System.out.println("Sold price for " + entry.getValue().getName() + " addded");
+                profit += (entry.getValue().getSoldPrice() - entry.getValue().getPrice());
             }
         }
         System.out.println("You have already spended: " + spendMoney + " PLN");
-        System.out.println("You have already earned: " + earnedMoney + " PLN");
+        System.out.println("You sold items for: " + earnedMoney + " PLN");
+        System.out.println("Current profit: " + profit + " PLN");
+
         if (earnedMoney > spendMoney) {
             System.out.println("Wow, you are on +");
         } else {
             System.out.println("Keep trying");
         }
     }
-        public void details () {
 
+    public void details() {
+
+        printInLine();
+        System.out.print("\nPick item: ");
+        int pickItem = in.nextInt();
+
+        if (items.containsKey(pickItem)) {
+            System.out.println("\n|  Details |");
+            System.out.println("Name: " + items.get(pickItem).getName() +
+                    "\nPrice: " + items.get(pickItem).getPrice() +
+                    "\nCondition: " + items.get(pickItem).getCondition() + "/10" +
+                    "\nColor: ");
+        } else {
+            System.out.println("Item not found");
         }
     }
+
+    private void printInLine() {
+        for (Map.Entry<Integer, Item> entry : items.entrySet()) {
+            if (!entry.getValue().isSold()) {
+                System.out.print(" - " + entry.getKey() + "." + entry.getValue().getName());
+            }
+        }
+    }
+}
