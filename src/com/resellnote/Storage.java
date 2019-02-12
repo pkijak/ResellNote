@@ -37,27 +37,63 @@ public class Storage {
     }
 
     public void addItem() {
-        /*
-        if (items.size() >= maxCapacity) {
-            System.out.println("You cant add more items, storage full! (" + items.size() + "/" + maxCapacity + ")");
-        } else {
-            items.put(Item.assignId(), new Shoes("Piraty", 1500, 7, "red", 11));
-            items.put(Item.assignId(), new Shoes("Belugi", 1500, 7, "red", 11));
-            items.put(Item.assignId(), new Shoes("Zebry", 1500, 7, "red", 11));
-            items.put(Item.assignId(), new Shoes("Creamy", 1500, 7, "red", 11));
-            items.put(Item.assignId(), new Shoes("Sezame", 1500, 7, "red", 11));
-            System.out.println("Item added");
-        } */
+
         System.out.println("What do you want to add? [Shoes] | [Clothes] | [Accessories] ");
         String option = in.nextLine();
 
         switch (option.toLowerCase()) {
+
             case "clothes":
-                System.out.println("adding clothes");
-                break;
+                System.out.println("Enter Name / Color / Size, split by ' - ' ");
+                String clothesString = in.nextLine();
+                String[] clothesArray = clothesString.split("-");
+
+                if (clothesArray.length == 3) {
+                    System.out.println("Name: " + clothesArray[0]);
+                    System.out.println("Color: " + clothesArray[1]);
+                    System.out.println("Size: " + clothesArray[2]);
+
+                    System.out.println("\n Enter price: ");
+                    int price = in.nextInt();
+
+                    System.out.println("Enter condition: ");
+                    int condition = in.nextInt();
+
+                    items.put(Item.assignId(), new Clothes(clothesArray[0], price, condition, clothesArray[2], clothesArray[2]));
+
+                    System.out.println(clothesArray[0] + " added to list");
+                    in.nextLine();
+                    break;
+                } else {
+                    System.out.println("Wrong number of parameters");
+                    break;
+                }
             case "shoes":
-                System.out.println("Addin shoes");
-                break;
+
+                System.out.println("Enter Name / Color, split by ' - ' ");
+                String shoesString = in.nextLine();
+                String[] shoesArray = shoesString.split("-");
+
+                if (shoesArray.length == 2) {
+                    System.out.println("Name: " + shoesArray[0]);
+                    System.out.println("Color: " + shoesArray[1]);
+
+                    System.out.println("\n Enter price: ");
+                    int price = in.nextInt();
+
+                    System.out.println("Enter condition: ");
+                    int condition = in.nextInt();
+
+                    System.out.println("Enter size: ");
+                    int size = in.nextInt();
+
+                    items.put(Item.assignId(), new Shoes(shoesArray[0], price, condition, shoesArray[1], size));
+                    System.out.println(shoesArray[0] + " added to list");
+                    in.nextLine();
+                    break;
+                } else {
+                    System.out.println("Wrong number of parameters");
+                }
             case "accessories":
                 System.out.println("adding accessories");
                 break;
@@ -66,46 +102,58 @@ public class Storage {
 
 
     public void modifyItem() { // work in progress
-        printInLine();
-        System.out.println("\nPick item to modify: ");
-        int id = in.nextInt();
-
-        if (items.containsKey(id)) {
-            System.out.println("Enter new name for " + items.get(id).getName());
-            in.nextLine();
-            String newName = in.nextLine();
-            items.get(id).setName(newName);
+        if (items.isEmpty()) {
+            System.out.println("Items not found");
         } else {
-            System.out.println("Item not found");
+            printInLine();
+            System.out.println("\nPick item to modify: ");
+            int id = in.nextInt();
+
+            if (items.containsKey(id)) {
+                System.out.println("Enter new name for " + items.get(id).getName());
+                in.nextLine();
+                String newName = in.nextLine();
+                items.get(id).setName(newName);
+            } else {
+                System.out.println("Item not found");
+            }
         }
     }
 
     public void sellItem() {
-        printInLine();
-        System.out.println("\nChoose item to mark as sold: ");
-        int id = in.nextInt();
-
-        if (items.containsKey(id)) {
-            items.get(id).setSold(true);
-            System.out.println("How much did you get for " + items.get(id).getName() + "?: ");
-            items.get(id).setSoldPrice(in.nextInt());
-            System.out.println("You marked " + items.get(id).getName() + " as sold");
-            System.out.println("Your profit is " + (items.get(id).soldPrice - items.get(id).price) + " PLN");
+        if (items.isEmpty()) {
+            System.out.println("Items not found");
         } else {
-            System.out.println("Item not found");
+            printInLine();
+            System.out.println("\nChoose item to mark as sold: ");
+            int id = in.nextInt();
+
+            if (items.containsKey(id)) {
+                items.get(id).setSold(true);
+                System.out.println("How much did you get for " + items.get(id).getName() + "?: ");
+                items.get(id).setSoldPrice(in.nextInt());
+                System.out.println("You marked " + items.get(id).getName() + " as sold");
+                System.out.println("Your profit is " + (items.get(id).soldPrice - items.get(id).price) + " PLN");
+            } else {
+                System.out.println("Item not found");
+            }
         }
     }
 
     public void removeItem() {
-        printInLine();
-        System.out.println("\nChoose item to remove: ");
-        int id = in.nextInt();
-
-        if (items.containsKey(id)) {
-            System.out.println(items.get(id).getName() + " removed");
-            items.remove(id);
+        if (items.isEmpty()) {
+            System.out.println("Items not found");
         } else {
-            System.out.println("Item not found");
+            printInLine();
+            System.out.println("\nChoose item to remove: ");
+            int id = in.nextInt();
+
+            if (items.containsKey(id)) {
+                System.out.println(items.get(id).getName() + " removed");
+                items.remove(id);
+            } else {
+                System.out.println("Item not found");
+            }
         }
     }
 
@@ -127,12 +175,6 @@ public class Storage {
         System.out.println("You have already spended: " + spendMoney + " PLN");
         System.out.println("You sold items for: " + earnedMoney + " PLN");
         System.out.println("Current profit:  " + profit + " PLN");
-
-        if (earnedMoney > spendMoney) {
-            System.out.println("Wow, you are on +");
-        } else {
-            System.out.println("Keep trying");
-        }
     }
 
     public void details() {
